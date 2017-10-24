@@ -43,7 +43,6 @@ def solveIk(target_pose):
     if q0 is None:
         robotjoints = rospy.wait_for_message('/joint_states', sensor_msgs.msg.JointState)
         q0 = robotjoints.position[0:2]
-    
     q_sol = planner.ik([target_pose[0], target_pose[2]], q0)
     if q_sol is None:
         print 'no ik solution'
@@ -96,7 +95,7 @@ if __name__=="__main__":
     server = InteractiveMarkerServer("ik_interactive")
     
     # create an interactive marker for TargetPose
-    pose_link2 = [0, 0, 0.235, 0, 0, 0, 1]
+    pose_link2 = [0, 0, 0.125, 0, 0, 0, 1]
     pose_arm_base = transformPose(lr, pose_link2, 'link2', 'arm_base')
     
     pose_arm_base[3] = 0
