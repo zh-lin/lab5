@@ -16,15 +16,20 @@ exec_joint_pub = rospy.Publisher('/virtual_joint_states', sensor_msgs.msg.JointS
 use_real_arm = rospy.get_param('/real_arm', False)
 
 if __name__=="__main__":
-    radius = 0.05          # (meter)
-    center = [0.2, 0.15]  # (x,z) meter
+    radius = 0.03         # (meter)
+    center = [0.1, 0.1]  # (x,z) meter
     
     robotjoints = rospy.wait_for_message('/joint_states', sensor_msgs.msg.JointState)
     q0 = robotjoints.position
     
     for theta in np.linspace(0, 4*np.pi):
-        target_xz =   [center[0] + radius*np.cos(theta), center[1] + radius*np.sin(theta) ] ## [??, ??] use theta in your code
-        q_sol =       planner.ik(target_xz, q0) ## planner.ik( ?? )
+        # set up waypoints (in this case circular)
+        # known parameters: theta, radius, center[0], center[1]
+        # target_xz=???
+        target_xz =   [center[0] + radius*np.cos(theta), center[1] + radius*np.sin(theta) ]
+        
+        
+        q_sol = planner.ik(target_xz, q0)
         if q_sol is None:
             print 'no ik solution'
         else:

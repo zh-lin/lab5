@@ -28,11 +28,15 @@ def select_best_q(candidates, q0, weight = [1,1]):
 def ik(target_TCP_xz, q0):
     x, z = target_TCP_xz[0], target_TCP_xz[1]
     ik_candidate = []
-    
+     
+    # calculate q_1 and q_2 using trigonometry
+    # known parameters a1: link 1's length, a2: link 2's length, (x,z): the coordinates for the target point
     xz2 = x**2 + z**2  ## In Python, x**y: x to the power y
     aplus = a1 + a2
     amin = a1 - a2
     # candidate 1
+    # q_1=???
+    # q_2=???
     q_2 =   2*np.arctan(np.sqrt((aplus**2 - xz2)/(xz2 - amin**2)))
     q_1 =  np.arctan(z/x) - np.arctan((a2 * np.sin(q_2)) / (a1 + a2 * np.cos(q_2))) - np.pi/2
     
@@ -40,6 +44,8 @@ def ik(target_TCP_xz, q0):
         ik_candidate.append([q_1, q_2])
     
     # candidate 2
+    # q_1=???
+    # q_2=???
     q_2 = -1*2*np.arctan(np.sqrt((aplus**2 - xz2)/(xz2 - amin**2)))
     q_1 = np.arctan(z/x) - np.arctan((a2 * np.sin(q_2)) / (a1 + a2 * np.cos(q_2))) - np.pi/2
     
