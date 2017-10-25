@@ -15,7 +15,6 @@ def in_collision(q, obstacle_segs):
     # intersect() returns true it there are line segments
     arm_segments = [( (0,0), fk1(q) ), ( fk1(q), fk(q))]
     # arm_segments are the points of the two-link manipultor
-    return intersect(arm_segments[0][0], arm_segments[0][1], obstacle_segs[0][0], obstacle_segs[0][1]) or intersect(arm_segments[1][0], arm_segments[1][1], obstacle_segs[0][0], obstacle_segs[0][1])
     ## return True if there are segments from arm_segments and segments from obstacle_segs intersect
 
 if __name__=="__main__":
