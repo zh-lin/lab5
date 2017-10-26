@@ -25,7 +25,7 @@ NIter = 10000
 
 obstacle_segs = [ [[0.12,0.072], [0.22,0.072]], [[0.12,0.072], [0.22,0.072]] ]   # line segs ((x1,z1)--(x2,z2)) //0.072 = distance from armbase
 #obstacle_segs = []  # no obstacles
-target_x = [0.17, 0.042]
+target_x = [0.17, 0.03]
 q0 = [0.0, 0.0]
 
 def dist(p1, p2):

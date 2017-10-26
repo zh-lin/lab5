@@ -5,8 +5,8 @@ joint_limits = [
     [-np.pi, np.pi]]  
 
 # length of two links
-a1 = 0.069
-a2 = 0.125
+a1 = 0.093
+a2 = 0.08
 
 def in_joint_range(q):
     for i, qi in enumerate(q):
@@ -31,10 +31,14 @@ def ik(target_TCP_xz, q0):
      
     # calculate q_1 and q_2 using trigonometry
     # known parameters a1: link 1's length, a2: link 2's length, (x,z): the coordinates for the target point
-    
+    xz2 = x**2 + z**2  ## In Python, x**y: x to the power y
+    aplus = a1 + a2
+    amin = a1 - a2
     # candidate 1
     # q_1=???
     # q_2=???
+    q_2 =   2*np.arctan(np.sqrt((aplus**2 - xz2)/(xz2 - amin**2)))
+    q_1 =  np.arctan(z/x) - np.arctan((a2 * np.sin(q_2)) / (a1 + a2 * np.cos(q_2))) - np.pi/2
     
     if not np.isnan([q_1, q_2]).any():
         ik_candidate.append([q_1, q_2])
@@ -42,6 +46,8 @@ def ik(target_TCP_xz, q0):
     # candidate 2
     # q_1=???
     # q_2=???
+    q_2 = -1*2*np.arctan(np.sqrt((aplus**2 - xz2)/(xz2 - amin**2)))
+    q_1 = np.arctan(z/x) - np.arctan((a2 * np.sin(q_2)) / (a1 + a2 * np.cos(q_2))) - np.pi/2
     
     if not np.isnan([q_1, q_2]).any():
         ik_candidate.append([q_1, q_2])

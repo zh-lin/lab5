@@ -18,8 +18,8 @@ def joint_callback(j1, j2):
     #print j1, j2
     js = sensor_msgs.msg.JointState( header = j1.header, 
                                      name = ['joint1', 'joint2'],
-                                     position = [j1.current_pos, j2.current_pos],
-                                     velocity = [j1.velocity, j2.velocity],
+                                     position = [-j1.current_pos, -j2.current_pos],
+                                     velocity = [-j1.velocity, -j2.velocity],
                                      effort = [j1.load, j2.load] )
     joint_pub.publish(js)
     
