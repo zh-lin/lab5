@@ -7,9 +7,7 @@ $ export PATH="/home/robotvision/anaconda2/bin:$PATH"
 
 Installation:
 ```
-sudo apt-get install python-pygame
-sudo apt-get install python-matplotlib
-sudo apt-get install python-scipy
+conda install -c cogsci pygame
 ```
 
 Task 1:
