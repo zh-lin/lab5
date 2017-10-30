@@ -5,7 +5,7 @@ This tutorial needs pygame and other python lib; most of them should have includ
 
 $ export PATH="/home/robotvision/anaconda2/bin:$PATH"
 
-(optional) Installation:
+Installation:
 ```
 sudo apt-get install python-pygame
 ```
