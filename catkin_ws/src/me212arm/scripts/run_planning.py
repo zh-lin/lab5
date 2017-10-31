@@ -25,7 +25,7 @@ if __name__=="__main__":
     for theta in np.linspace(0, 4*np.pi):
         # set up waypoints (in this case circular)
         # known parameters: theta, radius, center[0], center[1]
-        # target_xz=???
+        target_xz=[center[0] + radius*np.cos(theta), center[1] + radius*np.sin(theta)]
         
         
         q_sol = planner.ik(target_xz, q0)

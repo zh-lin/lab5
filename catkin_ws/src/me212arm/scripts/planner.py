@@ -33,16 +33,18 @@ def ik(target_TCP_xz, q0):
     # known parameters a1: link 1's length, a2: link 2's length, (x,z): the coordinates for the target point
 
 
-    # candidate 1
-    # q_1=???
-    # q_2=???
+    # candidate 1    
+    q_2=-2*np.arctan(np.sqrt(((a1+a2)**2-(x**2+z**2))/((x**2+z**2)-(a1-a2)**2)))
+    q_1=np.arctan(z/x)-np.arctan((a2*np.sin(q_2))/(a1+a2*np.cos(q_2)))-np.pi/2
+
 
     if not np.isnan([q_1, q_2]).any():
         ik_candidate.append([q_1, q_2])
     
     # candidate 2
-    # q_1=???
-    # q_2=???
+    q_2=2*np.arctan(np.sqrt(((a1+a2)**2-(x**2+z**2))/((x**2+z**2)-(a1-a2)**2)))
+    q_1=np.arctan(z/x)-np.arctan((a2*np.sin(q_2))/(a1+a2*np.cos(q_2)))-np.pi/2
+
   
     if not np.isnan([q_1, q_2]).any():
         ik_candidate.append([q_1, q_2])
